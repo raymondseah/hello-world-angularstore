@@ -30,3 +30,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 `ng g module product --routing=true`
 
 `ng g component product/components/createproduct`
+
+
+
+references
+`https://www.youtube.com/watch?v=Q1839NnaYMY&list=PLV-DQnYj14bSeWaCLxBtHICMJx2nFTmlL&index=28&ab_channel=OOPCoders`
