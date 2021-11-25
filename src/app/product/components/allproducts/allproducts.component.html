@@ -1,0 +1,53 @@
+<div class="container">
+    <table mat-table [dataSource]="products" class="mat-elevation-z8 container">
+
+        <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>Id</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="productName">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.productName }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="productDescription">
+            <th mat-header-cell *matHeaderCellDef>Description</th>
+            <td mat-cell *matCellDef="let element">{{ element.productDescription }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="productPrice">
+            <th mat-header-cell *matHeaderCellDef>Price</th>
+            <td mat-cell *matCellDef="let element">{{ element.productPrice }}</td>
+        </ng-container>
+        <ng-container matColumnDef="pictureUrl">
+            <th mat-header-cell *matHeaderCellDef>Display</th>
+            <!-- <td mat-cell *matCellDef="let element">{{ element.pictureUrl }}</td> -->
+            <img *matCellDef="let element" src="{{element.pictureUrl}}" width="50px" height="50px"
+                alt="{{element.id}}" />
+
+        </ng-container>
+
+        <ng-container matColumnDef="actions">
+            <th mat-header-cell *matHeaderCellDef>Actions</th>
+            <td mat-cell *matCellDef="let element">
+                <!-- <button mat-button (click)="onUpdateProduct(element)">Edit</button>
+          <button mat-button (click)="onDeleteProduct(element)">Delete</button> -->
+                <!-- <button type="button" (click)="onSelect(element)">More</button> -->
+                <div *ngIf="LoggedIn">
+                    <button type="button" (click)="handleAddToCart(element)">Add to Chart</button>
+
+                </div>
+                <div *ngIf="!LoggedIn">
+                    <button type="button" [routerLink]="['/login']" >Login First</button>
+
+                </div>
+
+
+            </td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+</div>

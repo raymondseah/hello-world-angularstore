@@ -1,0 +1,41 @@
+<div class="row">
+    <div class="col-md-6 offset-md-3 mt-4">
+        <h3>Create a product</h3>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)" novalidate>
+            <div class="mb-3">
+                <label for="exampleInputProductName" class="form-label">ProductName</label>
+                <input name="ProductName" ngModel required #ProductName="ngModel" type="text" class="form-control"
+                    id="exampleInputProductName" placeholder="Register your product name" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputProductDescription" class="form-label">ProductDescription</label>
+                <input name="ProductDescription" ngModel required #ProductDescription="ngModel" type="text"
+                    class="form-control" id="exampleInputProductDescription" aria-describedby="emailHelp"
+                    placeholder="Register your product description" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputProductPrice" class="form-label">ProductPrice</label>
+                <input name="ProductPrice" ngModel required #ProductPrice="ngModel" type="number" class="form-control"
+                    id="exampleInputProductPrice" pattern="^\d*(\.\d{0,2})?$"
+                    placeholder="Register your product price up to 2 decimal places" />
+            </div>
+            <div class="mb-3">
+                <label for="exampleInputPictureUrl" class="form-label">PictureUrl</label>
+                <input name="PictureUrl" ngModel required #PictureUrl="ngModel" type="file" class="form-control"
+                    id="exampleInputPictureUrl" placeholder="Register your product picture"
+                    (change)="onChange($event)" />
+                <div *ngIf="myimage">
+                    <img hidden [src]="myimage | async" width="200px" height="200px" alt="" />
+                    <img [src]="base64string" width="200px" height="200px" alt="" />
+                    <a class="btn btn-danger" (click)="removeImage(f)" *ngIf="isImageSaved">Remove</a>
+                </div>
+            </div>
+
+
+
+
+
+            <button type="submit" [disabled]="f.invalid" class="btn btn-primary">Add Product</button>
+        </form>
+    </div>
+</div>
